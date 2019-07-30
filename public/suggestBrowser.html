@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Suggest Browser</title>
+</head>
+<style>
+  html,
+  body,
+  div,
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #f1f2f7;
+  }
+
+  .wrapper-box {
+    margin: 30px auto;
+    width: 1230px;
+    height: 746px;
+    background-image: url("./images/browser.jpg");
+    padding-top: 200px;
+    padding: 200px 40px 0;
+  }
+
+  .browser-list {
+    text-align: center;
+    list-style: none;
+  }
+
+  .browser-list>li {
+    width: 250px;
+    margin: 40px;
+    display: inline-block;
+  }
+
+  .browser-list>li:hover .browser-icon {
+    box-shadow: 6px 6px 6px 0 #aaa;
+  }
+
+  .browser-list>li:hover .browser-btn {
+    color: #f10;
+    border-color: #f10;
+  }
+
+  .browser-icon {
+    width: 250px;
+    height: 300px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding-top: 20px;
+    transition: all .3s;
+  }
+
+  .browser-icon>img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .browser-btn {
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10px;
+    border: 1px solid #999;
+    display: inline-block;
+    margin-top: 20px;
+    transition: all .3s;
+  }
+</style>
+
+<body>
+  <div class="wrapper-box">
+    <ul class="browser-list">
+      <li class="browser-chrome">
+        <a href="https://www.google.com/chrome" target="_blank">
+          <div class="browser-icon">
+            <img src="./images/browser-chrome.png" alt="">
+          </div>
+          <span class="browser-btn">Download Chrome</span>
+        </a>
+      </li>
+      <li class="browser-firefox">
+        <a href="https://www.mozilla.org/zh-CN/firefox" target="_blank">
+          <div class="browser-icon">
+            <img src="./images/browser-firefox.png" alt="">
+          </div>
+          <span class="browser-btn">Download FireFox</span>
+        </a>
+      </li>
+      <li class="browser-ie11">
+        <a href="https://support.microsoft.com/en-us/help/18520/download-internet-explorer-11-offline-installer" target="_blank">
+          <div class="browser-icon">
+            <img src="./images/browser-ie11.png" alt="">
+          </div>
+          <span class="browser-btn">Download IE11</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>

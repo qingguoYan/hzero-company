@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Error</title>
+  <style>
+    html,
+    body,
+    div,
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .wrapper-box {
+      margin: 300px auto;
+      width: 1200px;
+      height: 700px;
+      text-align: center;
+    }
+
+    .content {
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .error-icon {
+      width: 120px;
+      height: 120px;
+    }
+    .error-icon > img {
+      width: 120px;
+      height: 120px;
+    }
+
+    .error-content {
+      text-align: left;
+      padding-left: 20px;
+    }
+    .back-workplace {
+      text-decoration: none;
+      color: #5867dd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper-box">
+    <div class="content">
+      <div class="error-icon">
+        <img src="./images/icon-error.png" alt="">
+      </div>
+      <div class="error-content">
+        <h2>很抱歉！出现预料之外的错误</h2>
+        <div>
+          <p>
+            错误信息:
+            <span id="errMessage"></span>
+          </p>
+        </div>
+        <div>
+          <p>
+            错误页面:
+            <span id="errRoutePath"></span>
+          </p>
+        </div>
+        <div>
+          <a href="/workplace" class="back-workplace">返回首页</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var search = window.location.search.substr(1);
+    var params = search.split('&') || [];
+    var errorMessage = (params[0] || '').split('=')[1];
+    var errorLocationHref = (params[1] || '').split('=')[1];
+
+    document.querySelector('#errMessage').textContent = decodeURIComponent(errorMessage || '');
+    document.querySelector('#errRoutePath').textContent = decodeURIComponent(errorLocationHref || '');
+  </script>
+</body>
+
+</html>
