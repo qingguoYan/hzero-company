@@ -1,10 +1,11 @@
-import { getResponse } from 'utils/utils';
+import { getResponse, createPagination } from 'utils/utils';
 import { fetchTableData } from '../../services/company/companyService';
 
 export default {
     namespace: 'company',
     state: {
          dataList: [],
+         pagination: {},
     },
     effects: {
          *fetchTableData({ payload }, { call, put }) {
@@ -14,6 +15,7 @@ export default {
                  type: 'updateState',
                  payload: {
                      dataList: data.content,
+                     pagination: createPagination(data),
                  },
              });
            }

@@ -5,11 +5,14 @@ import { parseParameters } from 'hzero-front/lib/utils/utils';
  * 查询数据
  * */
 export async function fetchTableData(params) {
-  console.log('发送请求');
   const param = parseParameters(params);
-  console.log(param);
+  const pagination = {
+    page: param.page,
+    size: param.size,
+  };
   return request(`/leida/v1/pre-pay-report/list`, {
     method: 'POST',
+    query: pagination,
     body: param,
   });
 }
