@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Table } from 'hzero-ui';
+import EditTable from 'hzero-front/lib/components/EditTable';
 import intl from 'utils/intl';
 import { tableScrollWidth } from 'hzero-front/lib/utils/utils';
 
@@ -11,13 +11,13 @@ export default class ListTable extends PureComponent {
     const columns = [
       {
         title: intl.get('companyCode').d('公司代码'),
-        dataIndex: 'companyCode',
+        dataIndex: 'CompanyCode',
         width: 200,
         align: 'center',
       },
       {
         title: intl.get('sortField').d('搜索词'),
-        dataIndex: 'sortField',
+        dataIndex: 'SortField',
         width: 200,
         align: 'center',
       },
@@ -29,7 +29,7 @@ export default class ListTable extends PureComponent {
       },
       {
         title: intl.get('supplier').d('供应商'),
-        dataIndex: 'supplier',
+        dataIndex: 'Supplier',
         width: 200,
         align: 'center',
       },
@@ -41,13 +41,13 @@ export default class ListTable extends PureComponent {
       },
       {
         title: intl.get('yy1PurchaseOrderJel').d('采购订单'),
-        dataIndex: 'yy1PurchaseOrderJel',
+        dataIndex: 'yy1_PurchaseOrder_JEI',
         width: 200,
         align: 'center',
       },
       {
         title: intl.get('yy1PurchaseOrderItemJel').d('采购订单行'),
-        dataIndex: 'yy1PurchaseOrderItemJel',
+        dataIndex: 'yy1_PurchaseOrderItem_JEI',
         width: 200,
         align: 'center',
       },
@@ -83,7 +83,7 @@ export default class ListTable extends PureComponent {
       },
       {
         title: intl.get('cDay').d('净超期天数'),
-        dataIndex: 'cDay',
+        dataIndex: 'cday',
         width: 200,
         align: 'center',
       },
@@ -95,7 +95,7 @@ export default class ListTable extends PureComponent {
       },
     ];
     return (
-      <Table
+      <EditTable
         bordered
         scroll={{ x: tableScrollWidth(columns) }}
         columns={columns}

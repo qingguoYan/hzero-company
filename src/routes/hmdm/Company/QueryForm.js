@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Button, Col, DatePicker, Form, Input, Row} from 'hzero-ui';
-import { isEmpty } from 'lodash';
+import { Button, Col, DatePicker, Form, Select, Row} from 'hzero-ui';
 import moment from 'moment';
 import { Bind } from 'lodash-decorators';
 import Lov from 'components/Lov';
@@ -15,6 +14,7 @@ import {
 import intl from 'utils/intl';
 import { getCurrentOrganizationId } from 'utils/utils';
 
+const { Option } = Select;
 const { RangePicker } = DatePicker;
 const FormItem = Form.Item;
 const formLayout = {
@@ -35,12 +35,14 @@ export default class QueryForm extends PureComponent {
    */
   @Bind()
   handleSearch() {
-    const { form } = this.props;
-    form.validateFields((err, fieldsValue) => {
-      if (isEmpty(err)) {
-        const values = { ...fieldsValue };
-        console.log(values);
-      }
+    const { form, dispatch } = this.props;
+    const formValues = form.getFieldsValue();
+    const { CompanyCode, SortField, Supplier, Uncleared} = formValues;
+    const PostingDateStart=formValues.postingDate[0].format('YYYY-MM-DD');
+    const PostingDateEnd=formValues.postingDate[1].format('YYYY-MM-DD');
+    dispatch({
+      type: 'company/fetchTableData',
+      payload: { CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd},
     });
   }
 
@@ -83,7 +85,8 @@ export default class QueryForm extends PureComponent {
                     {...formLayout}
                     label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('公司代码')}
                   >
-                    {form.getFieldDecorator('companyCode', {
+                    {form.getFieldDecorator('CompanyCode', {
+                      initialValue: '',
                     })(
                       <Lov
                         originTenantId={getCurrentOrganizationId()}
@@ -99,7 +102,8 @@ export default class QueryForm extends PureComponent {
                     {...formLayout}
                     label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('搜索词')}
                   >
-                    {form.getFieldDecorator('searchTerm1', {
+                    {form.getFieldDecorator('SortField', {
+                      initialValue: '',
                     })(
                       <Lov
                         originTenantId={getCurrentOrganizationId()}
@@ -115,8 +119,8 @@ export default class QueryForm extends PureComponent {
                     {...formLayout}
                     label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('供应商')}
                   >
-                    {form.getFieldDecorator('supplier', {
-                      rules: [{required: true, message: '此处不能为空'}],
+                    {form.getFieldDecorator('Supplier', {
+                      initialValue: '',
                     })(
                       <Lov
                         originTenantId={getCurrentOrganizationId()}
@@ -151,9 +155,18 @@ export default class QueryForm extends PureComponent {
                       .d('查询范围')}
                     {...formLayout}
                   >
-                    {getFieldDecorator('queryScope', {
-                      rules: [{required: true, message: '此处不能为空'}],
-                    })(<Input />)}
+                    {getFieldDecorator('Uncleared', {
+                      initialValue: '',
+                    })(
+                      <Select
+                        style={{ width: '50%' }}
+                        onChange={this.handleCurrencyChange}
+                        defaultValue="outstandingAccount"
+                      >
+                        <Option value="outstandingAccount">未清项目</Option>
+                        <Option value="all">全部项目</Option>
+                      </Select>
+                    )}
                   </FormItem>
                 </Col>
 

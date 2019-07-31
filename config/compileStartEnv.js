@@ -15,7 +15,7 @@ module.exports = {
   BPM_HOST: `${process.env.API_HOST || 'http://172.16.211.160:10188'}/hwfe`,
   WFP_EDITOR: `${process.env.API_HOST || 'http://hzeronb.saas.hand-china.com'}/hwfp`,
   // API_HOST  请求数据地址
-  API_HOST: `${process.env.API_HOST || 'http://172.16.211.160:10188'}`,
+  API_HOST: `${process.env.API_HOST || 'http://hzerodev01.leida.com:8080'}`,
   WEBSOCKET_HOST: `${process.env.WEBSOCKET_HOST || 'ws://192.168.16.172:8120'}`,
   // 服务合并的环境变量
   routeMap: JSON.stringify({

@@ -9,12 +9,11 @@ export default {
     effects: {
          *fetchTableData({ payload }, { call, put }) {
            const data=getResponse(yield call(fetchTableData, payload));
-           console.log('00000');
            if (data) {
              yield put({
                  type: 'updateState',
                  payload: {
-                     dataList: data.dataList,
+                     dataList: data.content,
                  },
              });
            }
