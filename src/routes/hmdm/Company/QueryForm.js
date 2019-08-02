@@ -28,14 +28,11 @@ const formLayout = {
   company, loading,
 }))
 export default class QueryForm extends PureComponent {
-  constructor(props){
+
+  constructor(props) {
     super(props);
     this.state={
       expandForm: true,
-      CompanyCode: '',
-      SortField: '',
-      Supplier: '',
-      Uncleared: '',
     };
   }
 
@@ -47,17 +44,13 @@ export default class QueryForm extends PureComponent {
   @Bind()
   fetchData() {
     const { form, search } = this.props;
-    const {
-      CompanyCode,
-      SortField,
-      Supplier,
-      Uncleared,
-    }=this.state;
     const formValues = form.getFieldsValue();
-    const PostingDateStart=formValues.postingDate[0].format('YYYY-MM-DD');
-    const PostingDateEnd=formValues.postingDate[1].format('YYYY-MM-DD');
-    form.validateFields((err)=>{
-      if(!err){
+    const passData=moment().subtract(1, "years");
+    const nowData=moment();
+    const {CompanyCode, SortField, Supplier, Uncleared} = formValues;
+    if(formValues.postingDate[0]===undefined && formValues.postingDate[1]===undefined){
+        const PostingDateStart = passData.format('YYYY-MM-DD');
+        const PostingDateEnd = nowData.format('YYYY-MM-DD');
         const searchParam = {
           CompanyCode,
           SortField,
@@ -66,10 +59,21 @@ export default class QueryForm extends PureComponent {
           PostingDateStart,
           PostingDateEnd,
         };
-        search(searchParam);
-      }
-    });
-  }
+      search(searchParam);
+    }else {
+        const PostingDateStart=formValues.postingDate[0].format('YYYY-MM-DD');
+        const PostingDateEnd=formValues.postingDate[1].format('YYYY-MM-DD');
+        const searchParam = {
+          CompanyCode,
+          SortField,
+          Supplier,
+          Uncleared,
+          PostingDateStart,
+          PostingDateEnd,
+        };
+      search(searchParam);
+    }
+  };
 
   /**
    * 重置表单
@@ -92,66 +96,6 @@ export default class QueryForm extends PureComponent {
     });
   }
 
-  /**
-   * 校验组件
-   * @param text
-   */
-  @Bind()
-  handleSelectCompanyCode(text){
-    if(text === undefined){
-      this.setState({
-        CompanyCode: '',
-      });
-    }else {
-      this.setState({
-        CompanyCode: text,
-      });
-    }
-  }
-
-  /**
-   * 校验组件
-   * @param text
-   * @param record
-   */
-  @Bind()
-  handleSelectSortField(text, record){
-    if(text === undefined){
-      this.setState({SortField: ''});
-    }else {
-      this.setState({SortField: record.meaning});
-    }
-  }
-
-  /**
-   * 校验组件
-   * @param text
-   * @param record
-   */
-  @Bind()
-  handleSelectSupplier(text, record){
-    console.log(text);
-    console.log(record);
-    if(text === undefined){
-      this.setState({Supplier: ''});
-    }else {
-      this.setState({Supplier: record.Supplier});
-    }
-  }
-
-  /**
-   * 校验组件
-   * @param text
-   */
-  @Bind()
-  handleSelectUnCleared(text){
-    if(text === undefined){
-      this.setState({Uncleared: ''});
-    }else {
-      this.setState({Uncleared: text});
-    }
-  }
-
   render() {
     const { form } = this.props;
     const { getFieldDecorator } = this.props.form;
@@ -170,14 +114,11 @@ export default class QueryForm extends PureComponent {
                     {...formLayout}
                     label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('公司代码')}
                   >
-                    {form.getFieldDecorator('CompanyCode')(
+                    {form.getFieldDecorator('CompanyCode', {initialValue: ''})(
                       <Lov
                         originTenantId={getCurrentOrganizationId()}
                         code="LEIDA.COMPANY_NAME"
                         queryParams={{ tenantId: getCurrentOrganizationId() }}
-                        onChange={(text, record) => {
-                          this.handleSelectCompanyCode(text, record);
-                        }}
                       />
                     )}
                   </Form.Item>
@@ -188,15 +129,12 @@ export default class QueryForm extends PureComponent {
                     {...formLayout}
                     label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('搜索词')}
                   >
-                    {form.getFieldDecorator('SortField')
+                    {form.getFieldDecorator('SortField', {initialValue: ''})
                     (
                       <Lov
                         originTenantId={getCurrentOrganizationId()}
                         code="LEIDA.KEY_SEARCH"
                         queryParams={{ tenantId: getCurrentOrganizationId() }}
-                        onChange={(text, record) => {
-                          this.handleSelectSortField(text, record);
-                        }}
                       />
                     )
                     }
@@ -208,14 +146,11 @@ export default class QueryForm extends PureComponent {
                     {...formLayout}
                     label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('供应商')}
                   >
-                    {form.getFieldDecorator('Supplier')(
+                    {form.getFieldDecorator('Supplier', {initialValue: ''})(
                       <Lov
                         originTenantId={getCurrentOrganizationId()}
                         code="LEIDA.SUPPLIER_SEARCH"
                         queryParams={{ tenantId: getCurrentOrganizationId() }}
-                        onChange={(text, record) => {
-                          this.handleSelectSupplier(text, record);
-                        }}
                       />
                     )}
                   </Form.Item>
@@ -249,11 +184,10 @@ export default class QueryForm extends PureComponent {
                     {...formLayout}
                   >
                     {getFieldDecorator('Uncleared', {
-                      initialValue: ['W'],
+                      initialValue: 'W',
                     })(
                       <Select
                         style={{ width: '50%' }}
-                        onChange={this.handleSelectUnCleared}
                         defaultValue='W'
                       >
                         <Option value="W">未清项目</Option>
@@ -262,7 +196,6 @@ export default class QueryForm extends PureComponent {
                     )}
                   </FormItem>
                 </Col>
-
               </Row>
             </Col>
             <Col {...FORM_COL_4_LAYOUT} className="search-btn-more">
