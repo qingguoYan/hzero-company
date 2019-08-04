@@ -1,0 +1,13 @@
+.hdg-hr-list {
+  height: auto;
+}
+.hdg-hr-list :global .ant-form-item {
+  width: 90%;
+  display: inline-block;
+  line-height: 28px;
+  margin-bottom: 0 !important;
+}
+.hdg-hr-list :global .ant-form-item-control {
+  line-height: 28px;
+}
+/*# sourceMappingURL=index.css.map */

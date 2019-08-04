@@ -10,7 +10,7 @@ export async function fetchTableData(params) {
     page: param.page,
     size: param.size,
   };
-  return request(`/leida/v1/pre-pay-report/list`, {
+  return request(`/leida/v1/process-select/list/discountOAReport`, {
     method: 'POST',
     query: pagination,
     body: params,

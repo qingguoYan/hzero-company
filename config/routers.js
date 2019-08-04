@@ -17,4 +17,10 @@ module.exports = [
     component: "hmdm/PreferentialPolicies",
     models: ["hmdm/preferentialPolicies"],
   },
+  {
+    authorized: true,
+    path: "/hmdm/SaleContract",
+    component: "hmdm/SaleContract",
+    models: ["hmdm/saleContract"],
+  },
 ]

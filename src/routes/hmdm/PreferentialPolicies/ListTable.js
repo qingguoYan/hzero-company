@@ -147,7 +147,7 @@ export default class ListTable extends PureComponent {
             align: 'center',
           },
         ],
-      },]
+      }];
     return (
       <Table
         bordered

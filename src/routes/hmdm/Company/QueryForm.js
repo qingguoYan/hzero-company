@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
-import { Button, Col, DatePicker, Form, Select, Row} from 'hzero-ui';
+import { Button, Col, DatePicker, Form, Select, Row } from 'hzero-ui';
 import { Bind } from 'lodash-decorators';
 import Lov from 'components/Lov';
+import Input from 'hzero-ui/es/input';
 import { connect } from 'dva';
+import ExcelExport from 'components/ExcelExport';
 import moment from 'moment';
 import {
   FORM_COL_3_4_LAYOUT,
@@ -27,12 +29,21 @@ const formLayout = {
 @connect(({ company, loading }) => ({
   company, loading,
 }))
+
+
 export default class QueryForm extends PureComponent {
 
   constructor(props) {
+    const passData=moment().subtract(1, "years").subtract(1, "days").format('YYYY-MM-DD');
+    const nowData=moment().subtract(1, "days").format('YYYY-MM-DD');
     super(props);
     this.state={
-      expandForm: true,
+      CompanyCode: '',
+      SortField: '',
+      Supplier: '',
+      Uncleared: 'W',
+      PostingDateStart: passData,
+      PostingDateEnd: nowData,
     };
   }
 
@@ -42,64 +53,95 @@ export default class QueryForm extends PureComponent {
    * @memberof QueryForm
    */
   @Bind()
-  fetchData() {
+  fetchData(){
     const { form, search } = this.props;
-    const formValues = form.getFieldsValue();
-    const passData=moment().subtract(1, "years");
-    const nowData=moment();
-    const {CompanyCode, SortField, Supplier, Uncleared} = formValues;
-    if(formValues.postingDate[0]===undefined && formValues.postingDate[1]===undefined){
-        const PostingDateStart = passData.format('YYYY-MM-DD');
-        const PostingDateEnd = nowData.format('YYYY-MM-DD');
-        const searchParam = {
-          CompanyCode,
-          SortField,
-          Supplier,
-          Uncleared,
-          PostingDateStart,
-          PostingDateEnd,
-        };
-      search(searchParam);
-    }else {
-        const PostingDateStart=formValues.postingDate[0].format('YYYY-MM-DD');
-        const PostingDateEnd=formValues.postingDate[1].format('YYYY-MM-DD');
-        const searchParam = {
-          CompanyCode,
-          SortField,
-          Supplier,
-          Uncleared,
-          PostingDateStart,
-          PostingDateEnd,
-        };
-      search(searchParam);
-    }
-  };
-
-  /**
-   * 重置表单
-   *
-   * @memberof QueryForm
-   */
-  @Bind()
-  handleFormReset() {
-    this.props.form.resetFields();
+    const {CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd}=this.state;
+    form.validateFields((err) => {
+      if(!err) {
+        const searchParam={ CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd};
+        search(searchParam);
+      }
+    });
   }
 
   /**
-   * 多查询条件展示
+   * 搜索词事件
+   * @param text
+   * @param record
    */
   @Bind()
-  toggleForm() {
-    const { expandForm } = this.state;
+  handleInputChange(e){
     this.setState({
-      expandForm: !expandForm,
+      SortField: e.target.value,
     });
+  }
+
+  /**
+   * 供应商事件
+   * @param text
+   * @param record
+   */
+  @Bind()
+  handleSupplierChange(text, record){
+    if(text === undefined){
+      this.setState(({Supplier: ''}));
+    }else if(record){
+      this.setState({Supplier: record.businessPartner});
+    }
+  }
+
+  /**
+   * 公司代码事件
+   * @param text
+   */
+  @Bind()
+  handleCompanyCodeChange(text){
+    if(text === undefined){
+      this.setState({CompanyCode: ''});
+    }else{
+      this.setState({CompanyCode: text});
+    }
+  }
+
+  /**
+   * 查询范围事件
+   * @param text
+   */
+  @Bind()
+  handleUnclearedChange(text){
+    if(text === undefined){
+      this.setState({Uncleared: 'W'});
+    }else {
+      this.setState({Uncleared: text});
+    }
+  }
+
+  /**
+   * 日期事件
+   * @param date
+   * @param dateString
+   */
+  @Bind()
+  handlePostingDate(date, dateString){
+    const passData=moment().subtract(1, "years").subtract(1, "days").format('YYYY-MM-DD');
+    const nowData=moment().subtract(1, "days").format('YYYY-MM-DD');
+    if(date.length===0){
+      this.setState({PostingDateStart: passData, PostingDateEnd: nowData});
+    }else {
+      this.setState({
+        PostingDateStart: dateString[0],
+        PostingDateEnd: dateString[1],
+      });
+    }
   }
 
   render() {
     const { form } = this.props;
     const { getFieldDecorator } = this.props.form;
-    const { expandForm } = this.state;
+    const { CompanyCode, SortField } =this.state;
+    const companyCode = CompanyCode;
+    const searchTerm1 = SortField;
+    const exportParam={...form.getFieldsValue()};
     const passData=moment().subtract(1, "years");
     const nowData=moment();
     return (
@@ -112,13 +154,14 @@ export default class QueryForm extends PureComponent {
                   <Form.Item
                     {...SEARCH_FORM_ITEM_LAYOUT}
                     {...formLayout}
-                    label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('公司代码')}
+                    label={intl.get('CompanyCode').d('公司代码')}
                   >
                     {form.getFieldDecorator('CompanyCode', {initialValue: ''})(
                       <Lov
                         originTenantId={getCurrentOrganizationId()}
                         code="LEIDA.COMPANY_NAME"
                         queryParams={{ tenantId: getCurrentOrganizationId() }}
+                        onChange={(text, record)=>{this.handleCompanyCodeChange(text, record);}}
                       />
                     )}
                   </Form.Item>
@@ -127,14 +170,13 @@ export default class QueryForm extends PureComponent {
                   <Form.Item
                     {...SEARCH_FORM_ITEM_LAYOUT}
                     {...formLayout}
-                    label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('搜索词')}
+                    label={intl.get('SortField').d('搜索词')}
                   >
-                    {form.getFieldDecorator('SortField', {initialValue: ''})
+                    {form.getFieldDecorator('inputValue', {initialValue: ''})
                     (
-                      <Lov
-                        originTenantId={getCurrentOrganizationId()}
-                        code="LEIDA.KEY_SEARCH"
-                        queryParams={{ tenantId: getCurrentOrganizationId() }}
+                      <Input
+                        value={SortField}
+                        onChange={(e)=>{this.handleInputChange(e);}}
                       />
                     )
                     }
@@ -144,25 +186,24 @@ export default class QueryForm extends PureComponent {
                   <Form.Item
                     {...SEARCH_FORM_ITEM_LAYOUT}
                     {...formLayout}
-                    label={intl.get('hsdr.concPermission.model.permission.concPragramId').d('供应商')}
+                    label={intl.get('Supplier').d('供应商编号')}
                   >
-                    {form.getFieldDecorator('Supplier', {initialValue: ''})(
+                    {form.getFieldDecorator('businessPartner', {initialValue: ''})(
                       <Lov
                         originTenantId={getCurrentOrganizationId()}
-                        code="LEIDA.SUPPLIER_SEARCH"
-                        queryParams={{ tenantId: getCurrentOrganizationId() }}
+                        code="LEIDA.SUPPLIER_SEARCH_FIX"
+                        queryParams={{ tenantId: getCurrentOrganizationId(), companyCode, searchTerm1 }}
+                        onChange={(text, record)=>{this.handleSupplierChange(text, record);}}
                       />
                     )}
                   </Form.Item>
                 </Col>
               </Row>
-              <Row style={{ display: expandForm ? 'block' : 'none' }}>
+              <Row>
                 <Col {...FORM_COL_2_LAYOUT}>
                   <FormItem
                     {...SEARCH_FORM_ITEM_LAYOUT}
-                    label={intl
-                      .get('hmsg.messageQuery.model.messageQuery.startDate')
-                      .d('查询日期')}
+                    label={intl.get('postingDate').d('查询日期')}
                     {...formLayout}
                   >
                     {getFieldDecorator('postingDate', {
@@ -171,6 +212,7 @@ export default class QueryForm extends PureComponent {
                       <RangePicker
                         allowClear
                         style={{ width: 192 }}
+                        onChange={this.handlePostingDate}
                       />
                     )}
                   </FormItem>
@@ -179,7 +221,7 @@ export default class QueryForm extends PureComponent {
                   <FormItem
                     {...SEARCH_FORM_ITEM_LAYOUT}
                     label={intl
-                      .get('hmsg.messageQuery.model.messageQuery.serverCode')
+                      .get('Uncleared')
                       .d('查询范围')}
                     {...formLayout}
                   >
@@ -189,9 +231,10 @@ export default class QueryForm extends PureComponent {
                       <Select
                         style={{ width: '50%' }}
                         defaultValue='W'
+                        onChange={(text, record)=>{this.handleUnclearedChange(text, record);}}
                       >
-                        <Option value="W">未清项目</Option>
-                        <Option value="A">全部项目</Option>
+                        <Option value="W">{intl.get('uncleared').d('未清项目')}</Option>
+                        <Option value="A">{intl.get('uncleared').d('全部项目')}</Option>
                       </Select>
                     )}
                   </FormItem>
@@ -200,17 +243,15 @@ export default class QueryForm extends PureComponent {
             </Col>
             <Col {...FORM_COL_4_LAYOUT} className="search-btn-more">
               <Form.Item>
-                <Button onClick={this.toggleForm}>
-                  {expandForm
-                    ? intl.get('hzero.common.button.collected').d('收起查询')
-                    : intl.get('hzero.common.button.viewMore').d('更多查询')}
-                </Button>
-                <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>
-                  {intl.get('hzero.common.button.reset').d('重置')}
-                </Button>
                 <Button type="primary" htmlType="submit" onClick={this.fetchData}>
                   {intl.get('hzero.common.button.search').d('查询')}
                 </Button>
+              </Form.Item>
+              <Form.Item>
+                <ExcelExport
+                  requestUrl=""
+                  queryParams={exportParam}
+                />
               </Form.Item>
             </Col>
           </Row>

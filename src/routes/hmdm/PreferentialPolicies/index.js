@@ -17,6 +17,7 @@ export default class PreferentialPolicies extends PureComponent {
     super(props);
     this.params = '';
   }
+
    /**
    * 点击查询,将子组件的参数传递给state的params，以方便分页事件参数的获取
    */
@@ -25,6 +26,7 @@ export default class PreferentialPolicies extends PureComponent {
     this.params = searchParam;
     this.fetchTableData(searchParam);
   }
+
    /**
    *响应分页事件
    */

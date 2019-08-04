@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import intl from 'utils/intl';
 import moment from 'moment';
 import { getCurrentUser } from 'hzero-front/lib/utils/utils';
-import { Form, Row, Col, Input, InputNumber, DatePicker } from 'hzero-ui';
+import { Form, Row, Col, Input, InputNumber, DatePicker, Select } from 'hzero-ui';
 import { digitUppercase } from '../../../utils/numberUtil';
 
-
+const { Option } = Select;
 export default class ProcessForm extends PureComponent{
   render() {
     const formLayout = {
@@ -101,7 +101,18 @@ export default class ProcessForm extends PureComponent{
         <Row type="flex">
           <Col span={8}>
             <Form.Item {...formLayout} label={intl.get('isEffect').d('是否生效')}>
-              <Input value='是' readOnly />
+              {form.getFieldDecorator('takeEffect', {
+                initialValue: "true",
+              })(
+                <Select
+                  style={{ width: '50%' }}
+                  onChange={this.handleCurrencyChange}
+                  defaultValue="true"
+                >
+                  <Option value="true">是</Option>
+                  <Option value="false">否</Option>
+                </Select>
+              )}
             </Form.Item>
           </Col>
         </Row>
