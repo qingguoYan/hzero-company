@@ -16,7 +16,7 @@ export default {
              compare(
                "Supplier",
                "yy1_PurchaseOrder_JEI",
-               "yy1_PurchaseOrderItem_JEIe",
+               "yy1_PurchaseOrderItem_JEI",
                "addAmount",
              )
            );

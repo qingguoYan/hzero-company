@@ -18,16 +18,18 @@ const formLayout = {
 };
 
 @Form.create({ fieldNameProp: null })
-@connect(({ company, loading }) => ({
-  company, loading,
+@connect(({ prepayReporte, loading }) => ({
+  prepayReporte,
+  loading,
 }))
 export default class QueryForm extends PureComponent {
-
   constructor(props) {
-    const passData=moment().subtract(1, "years").format('YYYY-MM-DD');
-    const nowData=moment().format('YYYY-MM-DD');
+    const passData = moment()
+      .subtract(1, 'years')
+      .format('YYYY-MM-DD');
+    const nowData = moment().format('YYYY-MM-DD');
     super(props);
-    this.state={
+    this.state = {
       CompanyCode: '',
       SortField: '',
       Supplier: '',
@@ -43,12 +45,26 @@ export default class QueryForm extends PureComponent {
    * @memberof QueryForm
    */
   @Bind()
-  fetchData(){
+  fetchData() {
     const { form, search } = this.props;
-    const {CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd}=this.state;
-    form.validateFields((err) => {
-      if(!err) {
-        const searchParam={ CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd};
+    const {
+      CompanyCode,
+      SortField,
+      Supplier,
+      Uncleared,
+      PostingDateStart,
+      PostingDateEnd,
+    } = this.state;
+    form.validateFields(err => {
+      if (!err) {
+        const searchParam = {
+          CompanyCode,
+          SortField,
+          Supplier,
+          Uncleared,
+          PostingDateStart,
+          PostingDateEnd,
+        };
         search(searchParam);
       }
     });
@@ -60,7 +76,7 @@ export default class QueryForm extends PureComponent {
    * @param record
    */
   @Bind()
-  handleInputChange(e){
+  handleInputChange(e) {
     this.setState({
       SortField: e.target.value,
     });
@@ -72,11 +88,11 @@ export default class QueryForm extends PureComponent {
    * @param record
    */
   @Bind()
-  handleSupplierChange(text, record){
-    if(text === undefined){
-      this.setState(({Supplier: ''}));
-    }else if(record){
-      this.setState({Supplier: record.businessPartner});
+  handleSupplierChange(text, record) {
+    if (text === undefined) {
+      this.setState({ Supplier: '' });
+    } else if (record) {
+      this.setState({ Supplier: record.businessPartner });
     }
   }
 
@@ -85,11 +101,11 @@ export default class QueryForm extends PureComponent {
    * @param text
    */
   @Bind()
-  handleCompanyCodeChange(text){
-    if(text === undefined){
-      this.setState({CompanyCode: ''});
-    }else{
-      this.setState({CompanyCode: text});
+  handleCompanyCodeChange(text) {
+    if (text === undefined) {
+      this.setState({ CompanyCode: '' });
+    } else {
+      this.setState({ CompanyCode: text });
     }
   }
 
@@ -98,11 +114,11 @@ export default class QueryForm extends PureComponent {
    * @param text
    */
   @Bind()
-  handleUnclearedChange(text){
-    if(text === undefined){
-      this.setState({Uncleared: 'W'});
-    }else {
-      this.setState({Uncleared: text});
+  handleUnclearedChange(text) {
+    if (text === undefined) {
+      this.setState({ Uncleared: 'W' });
+    } else {
+      this.setState({ Uncleared: text });
     }
   }
 
@@ -112,12 +128,14 @@ export default class QueryForm extends PureComponent {
    * @param dateString
    */
   @Bind()
-  handlePostingDate(date, dateString){
-    const passData=moment().subtract(1, "years").format('YYYY-MM-DD');
-    const nowData=moment().format('YYYY-MM-DD');
-    if(date.length===0){
-      this.setState({PostingDateStart: passData, PostingDateEnd: nowData});
-    }else {
+  handlePostingDate(date, dateString) {
+    const passData = moment()
+      .subtract(1, 'years')
+      .format('YYYY-MM-DD');
+    const nowData = moment().format('YYYY-MM-DD');
+    if (date.length === 0) {
+      this.setState({ PostingDateStart: passData, PostingDateEnd: nowData });
+    } else {
       this.setState({
         PostingDateStart: dateString[0],
         PostingDateEnd: dateString[1],
@@ -125,76 +143,71 @@ export default class QueryForm extends PureComponent {
     }
   }
 
-  /**
-   * 根据过账日期查询数据
-   * @returns {*}
-   */
-  @Bind
-  changeDataList(){
-    const {form, dispatch}=this.props;
-    const {postingDate} = form.getFieldsValue();
-    dispatch({
-      type: 'company/searchDataByTime',
-      payload: postingDate,
-    });
-  }
-
   render() {
     const { form } = this.props;
     const { getFieldDecorator } = this.props.form;
-    const { CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd } =this.state;
+    const {
+      CompanyCode,
+      SortField,
+      Supplier,
+      Uncleared,
+      PostingDateStart,
+      PostingDateEnd,
+    } = this.state;
     const companyCode = CompanyCode;
-    const searchTerm1 = SortField;;
-    const passData=moment().subtract(1, "years");
-    const nowData=moment();
-    const exportParam = {CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd};
+    const searchTerm1 = SortField;
+    const passData = moment().subtract(1, 'years');
+    const nowData = moment();
+    const exportParam = {
+      companyCode: CompanyCode,
+      sortField: SortField,
+      supplier: Supplier,
+      uncleared: Uncleared,
+      postingDateStart: PostingDateStart,
+      postingDateEnd: PostingDateEnd,
+    };
     return (
       <Form className="more-fields-search-form">
         <Row>
           <Col span={8}>
-            <Form.Item
-              label={intl.get('CompanyCode').d('公司代码')}
-              {...formLayout}
-            >
-              {form.getFieldDecorator('CompanyCode', {initialValue: ''})(
+            <Form.Item label={intl.get('CompanyCode').d('公司代码')} {...formLayout}>
+              {form.getFieldDecorator('CompanyCode', { initialValue: '' })(
                 <Lov
-                  style={{width: "150px"}}
+                  style={{ width: '150px' }}
                   originTenantId={getCurrentOrganizationId()}
                   code="LEIDA.COMPANY_NAME"
                   queryParams={{ tenantId: getCurrentOrganizationId() }}
-                  onChange={(text, record)=>{this.handleCompanyCodeChange(text, record);}}
+                  onChange={(text, record) => {
+                    this.handleCompanyCodeChange(text, record);
+                  }}
                 />
               )}
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item
-              label={intl.get('sortField').d('搜索词')}
-              {...formLayout}
-            >
-              {form.getFieldDecorator('sortField', {initialValue: ''})
-              (
+            <Form.Item label={intl.get('sortField').d('搜索词')} {...formLayout}>
+              {form.getFieldDecorator('sortField', { initialValue: '' })(
                 <Input
-                  style={{width: "150px"}}
+                  style={{ width: '150px' }}
                   value={SortField}
-                  onChange={(e)=>{this.handleInputChange(e);}}
+                  onChange={e => {
+                    this.handleInputChange(e);
+                  }}
                 />
-              )
-              }
+              )}
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item
-              label={intl.get('supplier').d('供应商编号')}
-              {...formLayout}
-            >
-              {form.getFieldDecorator('supplier', {initialValue: ''})(
+            <Form.Item label={intl.get('supplier').d('供应商编号')} {...formLayout}>
+              {form.getFieldDecorator('supplier', { initialValue: '' })(
                 <Lov
-                  style={{width: "150px"}}
+                  style={{ width: '150px' }}
                   originTenantId={getCurrentOrganizationId()}
                   code="LEIDA.SUPPLIER_SEARCH_FIX"
                   queryParams={{ tenantId: getCurrentOrganizationId(), companyCode, searchTerm1 }}
-                  onChange={(text, record)=>{this.handleSupplierChange(text, record);}}
+                  onChange={(text, record) => {
+                    this.handleSupplierChange(text, record);
+                  }}
                 />
               )}
             </Form.Item>
@@ -202,35 +215,29 @@ export default class QueryForm extends PureComponent {
         </Row>
         <Row>
           <Col span={8}>
-            <FormItem
-              label={intl.get('applicationDate').d('查询日期')}
-              {...formLayout}
-            >
+            <FormItem label={intl.get('applicationDate').d('查询日期')} {...formLayout}>
               {getFieldDecorator('applicationDate', {
                 initialValue: [passData, nowData],
               })(
                 <RangePicker
                   allowClear
-                  style={{ width: "200px" }}
+                  style={{ width: '200px' }}
                   onChange={this.handlePostingDate}
                 />
               )}
             </FormItem>
           </Col>
           <Col span={8}>
-            <FormItem
-              label={intl
-                .get('uncleared')
-                .d('查询范围')}
-              {...formLayout}
-            >
+            <FormItem label={intl.get('uncleared').d('查询范围')} {...formLayout}>
               {getFieldDecorator('uncleared', {
                 initialValue: 'W',
               })(
                 <Select
                   style={{ width: '50%' }}
-                  defaultValue='W'
-                  onChange={(text, record)=>{this.handleUnclearedChange(text, record);}}
+                  defaultValue="W"
+                  onChange={(text, record) => {
+                    this.handleUnclearedChange(text, record);
+                  }}
                 >
                   <Option value="W">{intl.get('uncleared').d('未清项目')}</Option>
                   <Option value="A">{intl.get('uncleared').d('全部项目')}</Option>
@@ -238,33 +245,21 @@ export default class QueryForm extends PureComponent {
               )}
             </FormItem>
           </Col>
-          <Col span={8}>
+          <Col span={4}>
             <Form.Item>
-              <Button style={{width: "120px"}} type="primary" htmlType="submit" onClick={this.fetchData}>
+              <Button
+                style={{ width: '120px' }}
+                type="primary"
+                htmlType="submit"
+                onClick={this.fetchData}
+              >
                 {intl.get('hzero.common.button.search').d('查询')}
               </Button>
             </Form.Item>
           </Col>
-        </Row>
-        <Row>
-          <Col span={8}>
-            <Form.Item label={intl.get('postingDate').d('过账日期')} {...formLayout}>
-              {getFieldDecorator('postingDate', {initialValue: ""})(<Input />)}
-            </Form.Item>
-          </Col>
-          <Col span={8}>
+          <Col span={4} className="search-btn-more">
             <Form.Item>
-              <Button type="primary" htmlType="submit" onClick={this.changeDataList}>
-                {intl.get('hzero.common.button.search').d('搜索')}
-              </Button>
-            </Form.Item>
-          </Col>
-          <Col span={8} className="search-btn-more">
-            <Form.Item>
-              <ExcelExport
-                requestUrl="/leida/v1/pre-pay-report/export"
-                queryParams={exportParam}
-              />
+              <ExcelExport requestUrl="/leida/v1/pre-pay-report/export" queryParams={exportParam} />
             </Form.Item>
           </Col>
         </Row>
