@@ -1,7 +1,6 @@
 import React from 'react';
 import { Header, Content } from 'hzero-front/lib/components/Page';
 import intl from 'hzero-front/lib/utils/intl';
-import formatterCollections from 'hzero-front/lib/utils/intl/formatterCollections';
 import { Form } from 'hzero-ui';
 import { Bind } from 'lodash-decorators';
 import classNames from 'classnames';
@@ -12,10 +11,9 @@ import styles from './index.less';
 import FilterForm from './FilterForm';
 
 @Form.create({ fieldNameProp: null })
-@formatterCollections({ code: ['ddcl.collect'] })
 @connect(({ saleContract, loading }) => ({
   saleContract,
-  loading,
+  fetchTableDataLoading: loading.effects['saleContract/fetchTableData'],
 }))
 export default class SaleContract extends React.Component {
   constructor(props) {
@@ -59,18 +57,20 @@ export default class SaleContract extends React.Component {
    * 表单跳转
    * */
   @Bind()
-  handleClick(){
+  handleClick=(record)=>{
     const { history }=this.props;
-    history.push('/hmdm/process');
-  }
+    history.push({pathname: "/hmdm/process", state: {...record}});
+  };
 
   render() {
     const {
+      fetchTableDataLoading,
       saleContract: { dataList = [], pagination = {} },
     } = this.props;
+    const map={'00': '无审批', '01': '进行中', '02': '批准', '03': '拒绝'};
     const columns = [
       {
-          title: intl.get('hzeroId').d('流程编码'),
+          title: intl.get('hzeroId').d('流程编号'),
           dataIndex: 'hzeroId',
           width: 100,
           align: 'center',
@@ -98,6 +98,11 @@ export default class SaleContract extends React.Component {
         dataIndex: 'takeEffect',
         width: 100,
         align: 'center',
+        render: (text)=>{return (
+          <div>
+            {text ? (<span>是</span>):(<span>否</span>)}
+          </div>
+        );},
       },
       {
         title: intl.get('policyNumber').d('优惠政策编号'),
@@ -110,13 +115,18 @@ export default class SaleContract extends React.Component {
         dataIndex: 'approval',
         width: 100,
         align: 'center',
+        render: (text)=>{
+          return map[text];
+        },
       },
       {
         title: ('表单'),
         dataIndex: 'form',
         width: 100,
         align: 'center',
-        render: ()=><a onClick={this.handleClick}>流程表单</a>,
+        render: (text, record)=>(
+          <a onClick={this.handleClick.bind(this, record)}>表单</a>
+        ),
       },
     ];
 
@@ -131,6 +141,7 @@ export default class SaleContract extends React.Component {
             bordered
             className={classNames(styles['hdg-hr-list'])}
             scroll={{ x: tableScrollWidth(columns) }}
+            loading={fetchTableDataLoading}
             columns={columns}
             dataSource={dataList}
             pagination={pagination}

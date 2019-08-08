@@ -55,7 +55,7 @@ export default class Company extends PureComponent {
   render() {
     const {
       fetchTableDataLoading,
-      company: { dataList = [], pagination = {} },
+      company: { dataList = [] },
     } = this.props;
     const columns = [
       {
@@ -71,13 +71,25 @@ export default class Company extends PureComponent {
         align: 'center',
       },
       {
+        title: intl.get('postingDate').d('过账日期'),
+        dataIndex: 'postingDate',
+        width: 200,
+        align: 'center',
+      },
+      {
+        title: intl.get('accountingDocument').d('日记账分录'),
+        dataIndex: 'accountingDocument',
+        width: 200,
+        align: 'center',
+      },
+      {
         title: intl.get('assignmentReference').d('分配参考'),
         dataIndex: 'assignmentReference',
         width: 200,
         align: 'center',
       },
       {
-        title: intl.get('supplier').d('供应商'),
+        title: intl.get('supplier').d('供应商编号'),
         dataIndex: 'Supplier',
         width: 200,
         align: 'center',
@@ -89,13 +101,13 @@ export default class Company extends PureComponent {
         align: 'center',
       },
       {
-        title: intl.get('yy1PurchaseOrderJel').d('采购订单'),
+        title: intl.get('yy1PurchaseOrderJel').d('采购订单/合同'),
         dataIndex: 'yy1_PurchaseOrder_JEI',
         width: 200,
         align: 'center',
       },
       {
-        title: intl.get('yy1PurchaseOrderItemJel').d('采购订单行'),
+        title: intl.get('yy1PurchaseOrderItemJel').d('行项目'),
         dataIndex: 'yy1_PurchaseOrderItem_JEI',
         width: 200,
         align: 'center',
@@ -107,7 +119,7 @@ export default class Company extends PureComponent {
         align: 'center',
       },
       {
-        title: intl.get('addAmount').d('累计付款金额'),
+        title: intl.get('addAmount').d('累计预付款金额'),
         dataIndex: 'addAmount',
         width: 200,
         align: 'center',
@@ -157,8 +169,6 @@ export default class Company extends PureComponent {
             columns={columns}
             dataSource={dataList}
             loading={fetchTableDataLoading}
-            pagination={pagination}
-            onChange={this.handlePagination}
           />
         </Content>
       </React.Fragment>

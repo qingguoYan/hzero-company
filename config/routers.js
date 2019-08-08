@@ -23,4 +23,10 @@ module.exports = [
     component: "hmdm/SaleContract",
     models: ["hmdm/saleContract"],
   },
+  {
+    authorized: true,
+    path: "/hmdm/bookPrint",
+    component: "hmdm/BookPrint",
+    models: ["hmdm/bookPrint"]
+  }
 ]

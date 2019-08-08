@@ -15,7 +15,7 @@ export default class Process extends PureComponent{
   render() {
     return(
       <React.Fragment>
-        <Header title={intl.get('process').d('废料流程表单')} />
+        <Header title={intl.get('process1.js').d('合同优惠政策流程表单')} />
         <Content>
           <div className='table-list-search'>
             <ProcessForm {...this.props} />

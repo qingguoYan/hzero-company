@@ -6,14 +6,6 @@ import Input from 'hzero-ui/es/input';
 import { connect } from 'dva';
 import ExcelExport from 'components/ExcelExport';
 import moment from 'moment';
-import {
-  FORM_COL_3_4_LAYOUT,
-  FORM_COL_3_LAYOUT,
-  FORM_COL_4_LAYOUT,
-  FORM_COL_2_LAYOUT,
-  SEARCH_FORM_ITEM_LAYOUT,
-  SEARCH_FORM_ROW_LAYOUT,
-} from 'utils/constants';
 import intl from 'utils/intl';
 import { getCurrentOrganizationId } from 'utils/utils';
 
@@ -29,13 +21,11 @@ const formLayout = {
 @connect(({ company, loading }) => ({
   company, loading,
 }))
-
-
 export default class QueryForm extends PureComponent {
 
   constructor(props) {
-    const passData=moment().subtract(1, "years").subtract(1, "days").format('YYYY-MM-DD');
-    const nowData=moment().subtract(1, "days").format('YYYY-MM-DD');
+    const passData=moment().subtract(1, "years").format('YYYY-MM-DD');
+    const nowData=moment().format('YYYY-MM-DD');
     super(props);
     this.state={
       CompanyCode: '',
@@ -123,8 +113,8 @@ export default class QueryForm extends PureComponent {
    */
   @Bind()
   handlePostingDate(date, dateString){
-    const passData=moment().subtract(1, "years").subtract(1, "days").format('YYYY-MM-DD');
-    const nowData=moment().subtract(1, "days").format('YYYY-MM-DD');
+    const passData=moment().subtract(1, "years").format('YYYY-MM-DD');
+    const nowData=moment().format('YYYY-MM-DD');
     if(date.length===0){
       this.setState({PostingDateStart: passData, PostingDateEnd: nowData});
     }else {
@@ -135,128 +125,150 @@ export default class QueryForm extends PureComponent {
     }
   }
 
+  /**
+   * 根据过账日期查询数据
+   * @returns {*}
+   */
+  @Bind
+  changeDataList(){
+    const {form, dispatch}=this.props;
+    const {postingDate} = form.getFieldsValue();
+    dispatch({
+      type: 'company/searchDataByTime',
+      payload: postingDate,
+    });
+  }
+
   render() {
     const { form } = this.props;
     const { getFieldDecorator } = this.props.form;
-    const { CompanyCode, SortField } =this.state;
+    const { CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd } =this.state;
     const companyCode = CompanyCode;
-    const searchTerm1 = SortField;
-    const exportParam={...form.getFieldsValue()};
+    const searchTerm1 = SortField;;
     const passData=moment().subtract(1, "years");
     const nowData=moment();
+    const exportParam = {CompanyCode, SortField, Supplier, Uncleared, PostingDateStart, PostingDateEnd};
     return (
-      <React.Fragment>
-        <Form className="more-fields-search-form">
-          <Row {...SEARCH_FORM_ROW_LAYOUT}>
-            <Col {...FORM_COL_3_4_LAYOUT}>
-              <Row {...SEARCH_FORM_ROW_LAYOUT}>
-                <Col {...FORM_COL_3_LAYOUT}>
-                  <Form.Item
-                    {...SEARCH_FORM_ITEM_LAYOUT}
-                    {...formLayout}
-                    label={intl.get('CompanyCode').d('公司代码')}
-                  >
-                    {form.getFieldDecorator('CompanyCode', {initialValue: ''})(
-                      <Lov
-                        originTenantId={getCurrentOrganizationId()}
-                        code="LEIDA.COMPANY_NAME"
-                        queryParams={{ tenantId: getCurrentOrganizationId() }}
-                        onChange={(text, record)=>{this.handleCompanyCodeChange(text, record);}}
-                      />
-                    )}
-                  </Form.Item>
-                </Col>
-                <Col {...FORM_COL_3_LAYOUT}>
-                  <Form.Item
-                    {...SEARCH_FORM_ITEM_LAYOUT}
-                    {...formLayout}
-                    label={intl.get('SortField').d('搜索词')}
-                  >
-                    {form.getFieldDecorator('inputValue', {initialValue: ''})
-                    (
-                      <Input
-                        value={SortField}
-                        onChange={(e)=>{this.handleInputChange(e);}}
-                      />
-                    )
-                    }
-                  </Form.Item>
-                </Col>
-                <Col {...FORM_COL_3_LAYOUT}>
-                  <Form.Item
-                    {...SEARCH_FORM_ITEM_LAYOUT}
-                    {...formLayout}
-                    label={intl.get('Supplier').d('供应商编号')}
-                  >
-                    {form.getFieldDecorator('businessPartner', {initialValue: ''})(
-                      <Lov
-                        originTenantId={getCurrentOrganizationId()}
-                        code="LEIDA.SUPPLIER_SEARCH_FIX"
-                        queryParams={{ tenantId: getCurrentOrganizationId(), companyCode, searchTerm1 }}
-                        onChange={(text, record)=>{this.handleSupplierChange(text, record);}}
-                      />
-                    )}
-                  </Form.Item>
-                </Col>
-              </Row>
-              <Row>
-                <Col {...FORM_COL_2_LAYOUT}>
-                  <FormItem
-                    {...SEARCH_FORM_ITEM_LAYOUT}
-                    label={intl.get('postingDate').d('查询日期')}
-                    {...formLayout}
-                  >
-                    {getFieldDecorator('postingDate', {
-                      initialValue: [passData, nowData],
-                    })(
-                      <RangePicker
-                        allowClear
-                        style={{ width: 192 }}
-                        onChange={this.handlePostingDate}
-                      />
-                    )}
-                  </FormItem>
-                </Col>
-                <Col {...FORM_COL_2_LAYOUT}>
-                  <FormItem
-                    {...SEARCH_FORM_ITEM_LAYOUT}
-                    label={intl
-                      .get('Uncleared')
-                      .d('查询范围')}
-                    {...formLayout}
-                  >
-                    {getFieldDecorator('Uncleared', {
-                      initialValue: 'W',
-                    })(
-                      <Select
-                        style={{ width: '50%' }}
-                        defaultValue='W'
-                        onChange={(text, record)=>{this.handleUnclearedChange(text, record);}}
-                      >
-                        <Option value="W">{intl.get('uncleared').d('未清项目')}</Option>
-                        <Option value="A">{intl.get('uncleared').d('全部项目')}</Option>
-                      </Select>
-                    )}
-                  </FormItem>
-                </Col>
-              </Row>
-            </Col>
-            <Col {...FORM_COL_4_LAYOUT} className="search-btn-more">
-              <Form.Item>
-                <Button type="primary" htmlType="submit" onClick={this.fetchData}>
-                  {intl.get('hzero.common.button.search').d('查询')}
-                </Button>
-              </Form.Item>
-              <Form.Item>
-                <ExcelExport
-                  requestUrl=""
-                  queryParams={exportParam}
+      <Form className="more-fields-search-form">
+        <Row>
+          <Col span={8}>
+            <Form.Item
+              label={intl.get('CompanyCode').d('公司代码')}
+              {...formLayout}
+            >
+              {form.getFieldDecorator('CompanyCode', {initialValue: ''})(
+                <Lov
+                  style={{width: "150px"}}
+                  originTenantId={getCurrentOrganizationId()}
+                  code="LEIDA.COMPANY_NAME"
+                  queryParams={{ tenantId: getCurrentOrganizationId() }}
+                  onChange={(text, record)=>{this.handleCompanyCodeChange(text, record);}}
                 />
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
-      </React.Fragment>
+              )}
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              label={intl.get('sortField').d('搜索词')}
+              {...formLayout}
+            >
+              {form.getFieldDecorator('sortField', {initialValue: ''})
+              (
+                <Input
+                  style={{width: "150px"}}
+                  value={SortField}
+                  onChange={(e)=>{this.handleInputChange(e);}}
+                />
+              )
+              }
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              label={intl.get('supplier').d('供应商编号')}
+              {...formLayout}
+            >
+              {form.getFieldDecorator('supplier', {initialValue: ''})(
+                <Lov
+                  style={{width: "150px"}}
+                  originTenantId={getCurrentOrganizationId()}
+                  code="LEIDA.SUPPLIER_SEARCH_FIX"
+                  queryParams={{ tenantId: getCurrentOrganizationId(), companyCode, searchTerm1 }}
+                  onChange={(text, record)=>{this.handleSupplierChange(text, record);}}
+                />
+              )}
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={8}>
+            <FormItem
+              label={intl.get('applicationDate').d('查询日期')}
+              {...formLayout}
+            >
+              {getFieldDecorator('applicationDate', {
+                initialValue: [passData, nowData],
+              })(
+                <RangePicker
+                  allowClear
+                  style={{ width: "200px" }}
+                  onChange={this.handlePostingDate}
+                />
+              )}
+            </FormItem>
+          </Col>
+          <Col span={8}>
+            <FormItem
+              label={intl
+                .get('uncleared')
+                .d('查询范围')}
+              {...formLayout}
+            >
+              {getFieldDecorator('uncleared', {
+                initialValue: 'W',
+              })(
+                <Select
+                  style={{ width: '50%' }}
+                  defaultValue='W'
+                  onChange={(text, record)=>{this.handleUnclearedChange(text, record);}}
+                >
+                  <Option value="W">{intl.get('uncleared').d('未清项目')}</Option>
+                  <Option value="A">{intl.get('uncleared').d('全部项目')}</Option>
+                </Select>
+              )}
+            </FormItem>
+          </Col>
+          <Col span={8}>
+            <Form.Item>
+              <Button style={{width: "120px"}} type="primary" htmlType="submit" onClick={this.fetchData}>
+                {intl.get('hzero.common.button.search').d('查询')}
+              </Button>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={8}>
+            <Form.Item label={intl.get('postingDate').d('过账日期')} {...formLayout}>
+              {getFieldDecorator('postingDate', {initialValue: ""})(<Input />)}
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" onClick={this.changeDataList}>
+                {intl.get('hzero.common.button.search').d('搜索')}
+              </Button>
+            </Form.Item>
+          </Col>
+          <Col span={8} className="search-btn-more">
+            <Form.Item>
+              <ExcelExport
+                requestUrl="/leida/v1/pre-pay-report/export"
+                queryParams={exportParam}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+      </Form>
     );
   }
 }

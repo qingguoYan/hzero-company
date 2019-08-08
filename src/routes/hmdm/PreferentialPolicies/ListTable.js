@@ -10,14 +10,14 @@ export default class ListTable extends PureComponent {
     } = this.props;
     const columns = [
       {
-        title: intl.get('businessPartners').d('业务伙伴'),
-        dataIndex: 'businessPartners',
+        title: intl.get('BusinessPartner').d('业务伙伴'),
+        dataIndex: 'BusinessPartner',
         align: 'center',
         width: 150,
       },
       {
-        title: intl.get('partnersName').d('业务伙伴名称'),
-        dataIndex: 'partnersName',
+        title: intl.get('BuPartnerName').d('业务伙伴名称'),
+        dataIndex: 'BuPartnerName',
         align: 'center',
         width: 150,
       },
@@ -26,20 +26,20 @@ export default class ListTable extends PureComponent {
         width: 500,
         children: [
           {
-            title: intl.get('amountDue').d('到期金额'),
-            dataIndex: 'amountDue',
+            title: intl.get('DueReceiv_V').d('到期金额'),
+            dataIndex: 'DueReceiv_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('notDue').d('未到期金额'),
-            dataIndex: 'notDue',
+            title: intl.get('NotDueReceiv_V').d('未到期金额'),
+            dataIndex: 'NotDueReceiv_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('totalAmount').d('总金额'),
-            dataIndex: 'totalAmount',
+            title: intl.get('TotalReceiv_V').d('总金额'),
+            dataIndex: 'TotalReceiv_V',
             width: 150,
             align: 'center',
           },
@@ -49,8 +49,8 @@ export default class ListTable extends PureComponent {
         title: intl.get('leida.sale.policy.xx4').d('预收'),
         children: [
           {
-            title: intl.get('totalAmount2').d('总金额'),
-            dataIndex: 'totalAmount2',
+            title: intl.get('PreTotalReceiv_V').d('总金额'),
+            dataIndex: 'PreTotalReceiv_V',
             width: 200,
             align: 'center',
           },
@@ -60,20 +60,20 @@ export default class ListTable extends PureComponent {
         title: intl.get('leida.sale.policy.xx5').d('其他应收'),
         children: [
           {
-            title: intl.get('amountDue2').d('到期金额'),
-            dataIndex: 'amountDue2',
+            title: intl.get('OtherDueReceiv_V').d('到期金额'),
+            dataIndex: 'OtherDueReceiv_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('notDue2').d('未到期金额'),
-            dataIndex: 'notDue2',
+            title: intl.get('OtherNotDueReceiv_V').d('未到期金额'),
+            dataIndex: 'OtherNotDueReceiv_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('totalAmount3').d('总金额'),
-            dataIndex: 'totalAmount3',
+            title: intl.get('OtherTotalReceiv_V').d('总金额'),
+            dataIndex: 'OtherTotalReceiv_V',
             width: 200,
             align: 'center',
           },
@@ -83,20 +83,20 @@ export default class ListTable extends PureComponent {
         title: intl.get('leida.sale.policy.xx6').d('应付'),
         children: [
           {
-            title: intl.get('amountDue3').d('到期金额'),
-            dataIndex: 'amountDue3',
+            title: intl.get('DuePay_V').d('到期金额'),
+            dataIndex: 'DuePay_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('notDue3').d('未到期金额'),
-            dataIndex: 'notDue3',
+            title: intl.get('NotDuePay_V').d('未到期金额'),
+            dataIndex: 'NotDuePay_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('totalAmount4').d('总金额'),
-            dataIndex: 'totalAmount4',
+            title: intl.get('TotalPay_V').d('总金额'),
+            dataIndex: 'TotalPay_V',
             width: 200,
             align: 'center',
           },
@@ -106,20 +106,20 @@ export default class ListTable extends PureComponent {
         title: intl.get('leida.sale.policy.xx7').d('其他应付'),
         children: [
           {
-            title: intl.get('amountDue4').d('到期金额'),
-            dataIndex: 'amountDue4',
+            title: intl.get('OtherDuePay_V').d('到期金额'),
+            dataIndex: 'OtherDuePay_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('notDue4').d('未到期金额'),
-            dataIndex: 'notDue4',
+            title: intl.get('OtherNotDuePay_V').d('未到期金额'),
+            dataIndex: 'OtherNotDuePay_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('totalAmount5').d('总金额'),
-            dataIndex: 'totalAmount5',
+            title: intl.get('OtherTotalPay_V').d('总金额'),
+            dataIndex: 'OtherTotalPay_V',
             width: 200,
             align: 'center',
           },
@@ -129,20 +129,20 @@ export default class ListTable extends PureComponent {
         title: intl.get('leida.sale.policy.xx8').d('预付'),
         children: [
           {
-            title: intl.get('amountDue5').d('到期金额'),
-            dataIndex: 'amountDue5',
+            title: intl.get('DuePrePay_V').d('到期金额'),
+            dataIndex: 'DuePrePay_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('notDue5').d('未到期金额'),
-            dataIndex: 'notDue5',
+            title: intl.get('NotDuePrePay_V').d('未到期金额'),
+            dataIndex: 'NotDuePrePay_V',
             width: 200,
             align: 'center',
           },
           {
-            title: intl.get('totalAmount6').d('总金额'),
-            dataIndex: 'totalAmount6',
+            title: intl.get('TotalPrePay_V').d('总金额'),
+            dataIndex: 'TotalPrePay_V',
             width: 200,
             align: 'center',
           },
@@ -154,6 +154,7 @@ export default class ListTable extends PureComponent {
         scroll={{ x: tableScrollWidth(columns) }}
         columns={columns}
         dataSource={dataList}
+        rowKey="companyCode"
       />
     );
   }

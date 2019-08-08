@@ -4,11 +4,21 @@
     <list default="true" id="5859198a-3d1c-42e7-9825-b2c48b1cf0cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routers.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/routers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/hmdm/company.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/hmdm/company.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/hmdm/preferentialPolicies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/hmdm/preferentialPolicies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/hmdm/process.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/hmdm/process.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/hmdm/saleContract.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/hmdm/saleContract.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/hmdm/Company/QueryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/Company/QueryForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/hmdm/Company/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/Company/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/ListTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/ListTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/QueryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/QueryForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/hmdm/Process/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/Process/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/hmdm/Process/processForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/Process/processForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/company/companyService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/company/companyService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/hmdm/Process/processTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/Process/processTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/hmdm/SaleContract/FilterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/SaleContract/FilterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/hmdm/SaleContract/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/hmdm/SaleContract/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/preferentialPolicies/preferentialPoliciesService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/preferentialPolicies/preferentialPoliciesService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/saleContract/saleContractService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/saleContract/saleContractService.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
@@ -22,7 +32,53 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/hmdm/bookPrint.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/hmdm/BookPrint/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="24">
+              <caret line="8" selection-start-line="8" selection-end-line="12" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/hmdm/BookPrint/QueryForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/services/bookPrint/bookPrintService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -31,7 +87,13 @@
       <find>Date</find>
       <find>meaning</find>
       <find>handleSupplierChange</find>
+      <find>format('YYYY-MM-DD')</find>
+      <find>console</find>
+      <find>rules</find>
     </findStrings>
+    <dirStrings>
+      <dir>D:\hand205\hzero-company\src\routes</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,29 +103,44 @@
       <list>
         <option value="$PROJECT_DIR$/config/compileStartEnv.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/Company/ListTable.js" />
-        <option value="$PROJECT_DIR$/src/routes/hmdm/Company/index.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/Company/QueryTable.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/Process/QueryTable.js" />
-        <option value="$PROJECT_DIR$/src/models/hmdm/process.js" />
+        <option value="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/index.js" />
+        <option value="$PROJECT_DIR$/src/services/company/companyService.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/Process/processTable.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/Process/index.js" />
-        <option value="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/index.js" />
+        <option value="D:/leidamytijiao/leida-front/config/routers.js" />
+        <option value="D:/leidamytijiao/leida-front/src/models/sale/discount.js" />
+        <option value="D:/leidamytijiao/leida-front/src/models/sale/discountForm.js" />
+        <option value="D:/leidamytijiao/leida-front/src/routes/sale/Discount/index.js" />
+        <option value="D:/leidamytijiao/leida-front/src/routes/sale/DiscountForm/index.js" />
+        <option value="D:/leidamytijiao/leida-front/src/routes/sale/DiscountForm/processForm.js" />
+        <option value="D:/leidamytijiao/leida-front/src/routes/sale/DiscountForm/processTable.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/ListTable.js" />
-        <option value="$PROJECT_DIR$/src/models/hmdm/preferentialPolicies.js" />
-        <option value="$PROJECT_DIR$/src/models/hmdm/company.js" />
+        <option value="$PROJECT_DIR$/src/services/preferentialPolicies/preferentialPoliciesService.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/QueryForm.js" />
-        <option value="$PROJECT_DIR$/config/routers.js" />
-        <option value="$PROJECT_DIR$/src/services/company/companyService.js" />
+        <option value="$PROJECT_DIR$/src/models/hmdm/preferentialPolicies.js" />
+        <option value="$PROJECT_DIR$/src/utils/commonUtils.js" />
+        <option value="$PROJECT_DIR$/src/models/hmdm/process.js" />
+        <option value="$PROJECT_DIR$/src/services/process/processService.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/Process/processForm.js" />
-        <option value="$PROJECT_DIR$/src/routes/hmdm/SaleContract/FilterForm.js" />
-        <option value="$PROJECT_DIR$/src/routes/hmdm/Company/QueryForm.js" />
+        <option value="D:/yqg20190805/leida-front/src/routes/sale/Discount/FilterForm.js" />
         <option value="$PROJECT_DIR$/src/routes/hmdm/SaleContract/index.js" />
+        <option value="$PROJECT_DIR$/src/routes/hmdm/Company/index.js" />
+        <option value="$PROJECT_DIR$/src/models/hmdm/company.js" />
+        <option value="$PROJECT_DIR$/src/routes/hmdm/Company/QueryForm.js" />
+        <option value="$PROJECT_DIR$/config/routers.js" />
+        <option value="$PROJECT_DIR$/src/services/bookPrint/bookPrint.js" />
+        <option value="$PROJECT_DIR$/src/models/hmdm/bookPrint.js" />
+        <option value="$PROJECT_DIR$/src/routes/hmdm/BookPrint/index.js" />
+        <option value="$PROJECT_DIR$/src/routes/hmdm/BookPrint/QueryForm.js" />
         <option value="$PROJECT_DIR$/src/services/saleContract/saleContractService.js" />
         <option value="$PROJECT_DIR$/src/models/hmdm/saleContract.js" />
+        <option value="$PROJECT_DIR$/src/routes/hmdm/SaleContract/FilterForm.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -77,7 +154,100 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="hmdm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="hmdm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="hmdm" type="462c0819:PsiDirectoryNode" />
+              <item name="BookPrint" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="hmdm" type="462c0819:PsiDirectoryNode" />
+              <item name="Company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="hmdm" type="462c0819:PsiDirectoryNode" />
+              <item name="Process" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="hmdm" type="462c0819:PsiDirectoryNode" />
+              <item name="SaleContract" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="bookPrint" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hzero-company" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hzero-company" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="saleContract" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
     </panes>
   </component>
@@ -85,7 +255,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/leida-front" />
+    <property name="last_opened_file_path" value="D:/yqg20190805/leida-front" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -96,7 +266,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="D:\hand205\hzero-company\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -149,25 +319,32 @@
       <workItem from="1564840501712" duration="1759000" />
       <workItem from="1564887871121" duration="13681000" />
       <workItem from="1564908462003" duration="1699000" />
+      <workItem from="1564927259827" duration="796000" />
+      <workItem from="1564964848732" duration="33724000" />
+      <workItem from="1565051725831" duration="27358000" />
+      <workItem from="1565098860249" duration="3683000" />
+      <workItem from="1565138149318" duration="31174000" />
+      <workItem from="1565185212179" duration="3803000" />
+      <workItem from="1565224804673" duration="318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165242000" />
+    <option name="totallyTimeSpent" value="266098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.22842261" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.17782739" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.41680396" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.34266886" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3295082" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.3294893" />
       <window_info anchor="bottom" id="Run" order="6" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
@@ -178,26 +355,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.17782739" />
-      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" visible="true" weight="0.23770492" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -208,15 +365,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/hzero-front/lib/components/EditTable/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -274,71 +422,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/preferentialPolicies/preferentialPoliciesService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/hmdm/preferentialPolicies.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="36" column="44" lean-forward="true" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/index.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/classnames/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/ListTable.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/moment/moment.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3200">
-          <caret line="148" column="10" selection-start-line="148" selection-start-column="10" selection-end-line="148" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/numberUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2053">
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/Process/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/hmdm/process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/QueryForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+        <state relative-caret-position="72">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -351,26 +447,239 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/classnames/index.js">
+    <entry file="file://$PROJECT_DIR$/src/utils/numberUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/models/sale/process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/services/sale/discount.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/models/sale/discountForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="57" selection-start-line="1" selection-start-column="57" selection-end-line="1" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/services/sale/discountForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/models/sale/discount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/routes/sale/DiscountForm/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/routes/sale/DiscountForm/processForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/routes/sale/DiscountForm/processTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/routes/sale/Discount/FilterForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/config/routers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="59" column="2" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/leidamytijiao/leida-front/src/routes/sale/Discount/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/preferentialPolicies/preferentialPoliciesService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-672">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/hmdm/process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/WeChat Files/upupyqg/FileStorage/File/2019-08/QueryForm(4).js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/Process/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" column="51" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/yqg20190805/leida-front/src/routes/sale/Discount/FilterForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="80" column="111" selection-start-line="80" selection-start-column="111" selection-end-line="80" selection-end-column="141" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/ListTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3556">
+          <caret line="149" column="9" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/PreferentialPolicies/QueryForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1200">
+          <caret line="1" column="69" lean-forward="true" selection-start-line="1" selection-start-column="69" selection-end-line="1" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/hmdm/preferentialPolicies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/dva/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="125" column="16" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="29" />
+        <state relative-caret-position="432">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/hmdm/Process/processTable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="-336">
+          <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/commonUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/Company/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-840">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/Company/QueryForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="162" column="42" lean-forward="true" selection-start-line="162" selection-start-column="24" selection-end-line="162" selection-end-column="42" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
@@ -379,42 +688,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/hmdm/Process/processForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="107" column="36" selection-start-line="107" selection-start-column="36" selection-end-line="107" selection-end-column="36" />
+        <state relative-caret-position="1152">
+          <caret line="48" column="41" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="41" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/SaleContract/FilterForm.js">
+    <entry file="file://$PROJECT_DIR$/src/services/company/companyService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-624">
-          <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/Company/QueryForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2880">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/Company/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="159" column="35" lean-forward="true" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/saleContract/saleContractService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state>
+          <caret selection-end-line="1" selection-end-column="62" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
@@ -423,38 +708,95 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/hmdm/company.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        <state relative-caret-position="216">
+          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/company/companyService.js">
+    <entry file="file://$PROJECT_DIR$/src/models/hmdm/saleContract.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        <state relative-caret-position="24">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/SaleContract/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="31" column="3" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/saleContract/saleContractService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/hmdm/saleContract.js">
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/SaleContract/FilterForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        <state relative-caret-position="245">
+          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
           <folding>
-            <element signature="e#0#81#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/SaleContract/index.js">
+    <entry file="file://$PROJECT_DIR$/src/models/hmdm/bookPrint.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="40" />
+        <state relative-caret-position="144">
+          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/BookPrint/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="8" selection-start-line="8" selection-end-line="12" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/hmdm/BookPrint/QueryForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/process/processService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/bookPrint/bookPrintService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
         </state>
       </provider>
     </entry>

@@ -4,52 +4,57 @@ import intl from 'hzero-front/lib/utils/intl';
 import { Bind } from 'lodash-decorators';
 import { getCurrentUser } from 'hzero-front/lib/utils/utils';
 import moment from 'moment';
+import { connect } from 'dva';
 
 const FormItem=Form.Item;
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
 @Form.create({ fieldNameProp: null })
+@connect(({ saleContract, loading }) => ({
+  saleContract,
+  loading,
+}))
 export default class FilterForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      // accountName: '', // 申请人
-      // applicationDate: '', // 申请日期
-      // approval: '', // 审批状态
-      // endDate: '', // 结束日期
-      // hzeroId: '', // 流程编号
-      // policyNumber: '', // 优惠政策编号
-      // requestId: '', // OA流程编号
-      // startDate: '', // 开始日期
-      // takeEffect: '', // 是否生效
+      name: getCurrentUser().realName,
+      id: "",
+      inheritRoleId: "",
     };
   }
 
-  // 判定日期的范围
-  @Bind()
-  handleData=(time)=>{
-    if(!time){
-      return false;
-    }else {
-        return time<moment(new Date('20190701'))||time>moment(new Date('20190731'));
-    }
-};
-
+  componentDidMount() {
+    const { dispatch } = this.props;
+    const { name } = this.state;
+    dispatch({
+      type: 'saleContract/getParent',
+      payload: { name },
+    });
+  }
 
   @Bind()
   fetchData() {
     const { form, search } = this.props;
-    // const { accountName, applicationDate, approval, endDate, hzeroId, policyNumber, requestId, startDate, takeEffect } = this.state;
+    if (this.state.id!==9&&this.state.inheritRoleId!==9) {
+      this.props.form.setFieldsValue({
+        "accountName": getCurrentUser().loginName,
+      });
+    }else{
+      this.props.form.getFieldsError();
+    }
+    const now=moment().format('YYYY-MM-DD');
     form.validateFields((err, values) => {
       if (!err) {
-        console.log(values);
         const searchParams={};
+        searchParams.applicationDate=now;
         if(values.accountName){
           searchParams.accountName=values.accountName;
         }
-        if(values.applicationDate){
-          searchParams.applicationDate=values.applicationDate;
+        if(values.postingDate){
+          searchParams.startDate=values.postingDate[0]?values.postingDate[0].format('YYYY-MM-DD'):"";
+          searchParams.endDate=values.postingDate[1]?values.postingDate[1].format('YYYY-MM-DD'):"";
         }
         if(values.approval){
           searchParams.approval=values.approval;
@@ -69,11 +74,20 @@ export default class FilterForm extends React.PureComponent {
         search(searchParams);
       }
     });
+    if(this.state.id!==9&&this.state.inheritRoleId!==9) {
+      this.props.form.resetFields("accountName");
+    }
   }
 
   render() {
-    const passData=moment('20190701');
-    const nowData=moment('20190731');
+    const {saleContract: {parent=[]}}=this.props;
+    if(parent[0]!==undefined) {
+      const {id, inheritRoleId}=parent[0];
+      this.setState({
+        id,
+        inheritRoleId,
+      });
+    }
     const { accountName } = {
       accountName: getCurrentUser().realName,
     };
@@ -89,7 +103,7 @@ export default class FilterForm extends React.PureComponent {
           </Col>
           <Col span={8}>
             <Form.Item label={intl.get('accountName').d('申请人')}>
-              {getFieldDecorator('accountName', {initialValue: accountName})(<Input defaultValue={accountName} />)}
+              {getFieldDecorator('accountName', {initialValue: accountName})(<Input disabled={this.state.id!==9&&this.state.inheritRoleId!==9} />)}
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -100,7 +114,7 @@ export default class FilterForm extends React.PureComponent {
         </Row>
         <Row>
           <Col span={8}>
-            <Form.Item label={intl.get('policyNumber').d('优惠政策编码')}>
+            <Form.Item label={intl.get('policyNumber').d('优惠政策编号')}>
               {getFieldDecorator('policyNumber', {initialValue: ""})(<Input />)}
             </Form.Item>
           </Col>
@@ -111,12 +125,11 @@ export default class FilterForm extends React.PureComponent {
                 .d('是否生效')}
             >
               {getFieldDecorator('takeEffect', {
-                initialValue: "true",
+                initialValue: "",
               })(
                 <Select
-                  style={{ width: '90%' }}
-                  onChange={this.handleCurrencyChange}
-                  defaultValue="true"
+                  style={{ width: '60px' }}
+                  allowClear
                 >
                   <Option value="true">是</Option>
                   <Option value="false">否</Option>
@@ -138,29 +151,28 @@ export default class FilterForm extends React.PureComponent {
               label={intl.get('approval').d('审批状态')}
             >
               {getFieldDecorator('approval', {
-                initialValue: "approve",
+                initialValue: "",
               })(
                 <Select
-                  style={{ width: '100%' }}
-                  onChange={this.handleCurrencyChange}
-                  defaultValue="approve"
+                  allowClear
+                  style={{ width: 150 }}
+                  placeholder="请选择审批状态"
                 >
-                  <Option value="approve">批准</Option>
-                  <Option value="reject">拒绝</Option>
-                  <Option value="underway">进行中</Option>
-                  <Option value="noApproval">无审批</Option>
+                  <Option value="00">无审批</Option>
+                  <Option value="01">进行中</Option>
+                  <Option value="02">批准</Option>
+                  <Option value="03">拒绝</Option>
                 </Select>
               )}
             </FormItem>
           </Col>
           <Col span={16}>
             <FormItem
-              label={intl.get('applicationDate').d('申请日期(日期范围)')}
+              label={intl.get('postingDate').d('申请日期(日期范围)')}
             >
-              {getFieldDecorator('applicationDate', {
-                initialValue: [passData, nowData],
+              {getFieldDecorator('postingDate', {
               })(
-                <RangePicker disabledDate={this.handleData} defaultValue={[passData, nowData]} />
+                <RangePicker />
               )}
             </FormItem>
           </Col>

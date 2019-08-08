@@ -16,3 +16,13 @@ export async function fetchTableData(params) {
     body: params,
   });
 }
+export async function getParent(params) {
+  const pa2 = parseParameters(params);
+  const pa3={
+    name: pa2.name,
+  };
+  return request(`/iam/hzero/v1/roles/self/manageable-roles`, {
+    method: 'GET',
+    query: pa3,
+  });
+}

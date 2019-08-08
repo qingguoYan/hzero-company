@@ -18,14 +18,7 @@ const formLayout = {
 export default class QueryForm extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      accountName1: "30000",
-      accountName2: "50000",
-      accountName3: "80000",
-      accountName4: "50000",
-      accountName5: "40000",
-      accountName6: "90000",
-    };
+    this.state = {};
   }
 
   /**
@@ -33,12 +26,17 @@ export default class QueryForm extends React.PureComponent {
    */
   @Bind()
   fetchData() {
+    const {dispatch}=this.props;
+    dispatch({
+      type: 'preferentialPolicies/fetchTableData',
+      payload: '',
+    });
   }
 
   render() {
     const { form } = this.props;
     const { getFieldDecorator } = form;
-    const {accountName1, accountName2, accountName3, accountName4, accountName5, accountName6}=this.state;
+    const { EmployDuePay, EmployNotDuePay, EmployTotalPay, EmployDueReceiv, EmployNotDueReceiv, EmployTotalReceiv}=this.props.preferentialPolicies;
     const nowDate= moment();
     return (
       <Form layout="inline">
@@ -73,6 +71,21 @@ export default class QueryForm extends React.PureComponent {
               )}
             </Form.Item>
           </Col>
+          <Col span={3}>
+            <Form.Item
+              {...SEARCH_FORM_ITEM_LAYOUT}
+              {...formLayout}
+              label={intl.get('leida.sale.PreferentialPolicies.BuPartnersHigh').d('')}
+            >
+              {form.getFieldDecorator('Customer', {initialValue: ''})(
+                <Lov
+                  originTenantId={getCurrentOrganizationId()}
+                  code="LEIDA.BUSINESS_PARTNER"
+                  queryParams={{ tenantId: getCurrentOrganizationId() }}
+                />
+              )}
+            </Form.Item>
+          </Col>
           <Col span={12}>
             <Form.Item
               label={intl.get('BusinessPartners').d('查询日期')}
@@ -96,42 +109,42 @@ export default class QueryForm extends React.PureComponent {
             <FormItem
               label={intl.get('money').d('员工应付到期金额')}
             >
-              <Input readOnly placeholder='10000' value={accountName1} />
+              <Input readOnly value={EmployDuePay} />
             </FormItem>
           </Col>
           <Col span={8}>
             <FormItem
               label={intl.get('money').d('员工应付未到期金额')}
             >
-              <Input readOnly placeholder='10000' value={accountName2} />
+              <Input readOnly value={EmployNotDuePay} />
             </FormItem>
           </Col>
           <Col span={8}>
             <FormItem
               label={intl.get('money').d('员工应付总金额')}
             >
-              <Input readOnly placeholder='10000' value={accountName3} />
+              <Input readOnly value={EmployTotalPay} />
             </FormItem>
           </Col>
           <Col span={8}>
             <FormItem
               label={intl.get('money').d('员工应收到期金额')}
             >
-              <Input readOnly placeholder='10000' value={accountName4} />
+              <Input readOnly value={EmployDueReceiv} />
             </FormItem>
           </Col>
           <Col span={8}>
             <FormItem
               label={intl.get('money').d('员工应收未到期金额')}
             >
-              <Input readOnly placeholder='10000' value={accountName5} />
+              <Input readOnly value={EmployNotDueReceiv} />
             </FormItem>
           </Col>
           <Col span={8}>
             <FormItem
               label={intl.get('money').d('员工应手总到期金额')}
             >
-              <Input readOnly placeholder='10000' value={accountName6} />
+              <Input readOnly value={EmployTotalReceiv} />
             </FormItem>
           </Col>
         </Row>
