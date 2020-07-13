@@ -7,7 +7,7 @@
     "babel-loader": "8.0.5",
     "conventional-changelog-cli": "^2.0.12",
     "lerna": "^3.13.1",
-    "standard-version": "^5.0.2",
+    "standard-version": "^8.0.1",
     "yarn": "^1.13.0"
   },
   "dependencies": {
